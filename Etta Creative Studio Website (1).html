@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etta — Motion Graphics, 2D Animation & Video Editing Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0B0914',
+                        obsidianLight: '#130F24',
+                        alabaster: '#F8F7FF',
+                        etta: {
+                            50: '#F5F3FF',
+                            100: '#EDE9FE',
+                            200: '#DDD6FE',
+                            300: '#C4B5FD',
+                            400: '#A78BFA',
+                            500: '#8B5CF6',
+                            600: '#7C3AED',
+                            700: '#6D28D9',
+                            800: '#5B21B6',
+                            900: '#4C1D95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+            overflow-x: hidden;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+        }
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .motion-card {
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+        }
+        .motion-card:hover {
+            transform: translateY(-6px);
+        }
+    </style>
+</head>
+
+<body class="bg-alabaster text-slate-900 dark:bg-obsidian dark:text-alabaster transition-colors duration-300 selection:bg-etta-500 selection:text-white">
+
+    <!-- Reusable SVG Definitions for the exact uploaded Etta Logo -->
+    <svg width="0" height="0" class="hidden" aria-hidden="true">
+        <defs>
+            <symbol id="etta-logo" viewBox="0 0 375 130">
+                <!-- Top detached curve of 'E' -->
+                <path d="M 16 61 C 17 31, 41 18, 72 18 L 122 18 C 115 30, 108 35, 97 35 L 70 35 C 48 35, 31 46, 16 61 Z" fill="currentColor"/>
+                <!-- Lower body & middle bar of 'E' -->
+                <path d="M 16 69 C 24 58, 35 53, 50 53 L 99 53 C 92 65, 84 70, 72 70 L 42 70 C 36 70, 34 74, 34 79 C 34 91, 46 101, 65 101 L 122 101 L 122 118 L 63 118 C 33 118, 16 99, 16 74 C 16 72, 16 70.5, 16 69 Z" fill="currentColor"/>
+                <!-- First 't' -->
+                <path d="M 139 22 L 156 22 L 156 42 L 183 42 L 183 57 L 156 57 L 156 89 C 156 98, 162 102, 172 102 L 181 102 L 181 118 L 169 118 C 148 118, 139 107, 139 89 L 139 57 L 127 57 L 127 42 L 139 42 Z" fill="currentColor"/>
+                <!-- Second 't' -->
+                <path d="M 206 22 L 223 22 L 223 42 L 250 42 L 250 57 L 223 57 L 223 89 C 223 98, 229 102, 239 102 L 248 102 L 248 118 L 236 118 C 215 118, 206 107, 206 89 L 206 57 L 194 57 L 194 42 L 206 42 Z" fill="currentColor"/>
+                <!-- Geometric lowercase 'a' -->
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M 308 38 C 281 38, 261 56, 261 78 C 261 100, 281 118, 306 118 C 320 118, 331 112, 338 103 L 338 117 L 355 117 L 355 78 C 355 54, 335 38, 308 38 Z M 308 54 C 325 54, 338 64, 338 78 C 338 92, 325 102, 308 102 C 291 102, 278 92, 278 78 C 278 64, 291 54, 308 54 Z" fill="currentColor"/>
+            </symbol>
+            <symbol id="discord-icon" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Background Glows -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[750px] h-[420px] bg-etta-600/15 dark:bg-etta-500/15 blur-[130px] rounded-full"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-60 dark:opacity-100"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full border-b border-etta-500/10 bg-alabaster/80 dark:bg-obsidian/80 glass-panel">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group focus:outline-none" aria-label="Etta Home">
+                <svg class="h-8 w-auto text-slate-900 dark:text-white group-hover:text-etta-500 transition-colors">
+                    <use href="#etta-logo"></use>
+                </svg>
+            </a>
+
+            <div class="flex items-center gap-3 sm:gap-5">
+                <a href="#work" class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-etta-500 transition-colors">Work</a>
+                <a href="#discord" class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-etta-500 transition-colors">Discord</a>
+
+                <button id="themeToggleBtn" type="button" class="p-2 rounded-full border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:border-etta-500/50 hover:text-etta-500 transition-all" aria-label="Toggle color theme">
+                    <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <a href="https://discord.gg/etta-studio" target="_blank" rel="noopener noreferrer" onclick="handleDiscordClick(event)" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-etta-600 hover:bg-etta-500 text-white shadow-lg shadow-etta-600/25 transition-all">
+                    <svg class="w-4 h-4"><use href="#discord-icon"></use></svg>
+                    <span>Join</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- Hero Section -->
+        <section class="py-16 sm:py-24 text-center flex flex-col items-center">
+            <svg class="h-14 sm:h-20 w-auto text-slate-900 dark:text-white mb-6">
+                <use href="#etta-logo"></use>
+            </svg>
+
+            <h1 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+                Motion. <span class="text-etta-500 dark:text-etta-400">2D.</span> Edit.
+            </h1>
+
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mb-8">
+                Visual storytelling &amp; high-retention motion design.
+            </p>
+
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+                <a href="#work" class="px-6 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-obsidian font-semibold text-xs sm:text-sm hover:opacity-90 transition-all">
+                    Watch Work
+                </a>
+                <a href="#discord" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-etta-600 hover:bg-etta-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-etta-600/30 transition-all">
+                    <svg class="w-4 h-4"><use href="#discord-icon"></use></svg>
+                    <span>Join Discord</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Video Portfolio Section -->
+        <section id="work" class="pb-24 space-y-8">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/70 dark:border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-etta-500 animate-pulse"></span>
+                    <h2 class="font-display text-lg sm:text-xl font-bold tracking-tight">Featured Work</h2>
+                    <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-etta-500/10 text-etta-600 dark:text-etta-300 border border-etta-500/20">
+                        1 Main • 4 Shorts
+                    </span>
+                </div>
+            </div>
+
+            <!-- Main 16:9 Video -->
+            <div class="motion-card rounded-3xl border border-etta-500/30 bg-white dark:bg-obsidianLight shadow-2xl overflow-hidden">
+                <div class="relative aspect-video w-full bg-[#07050E]">
+                    <iframe src="https://www.youtube-nocookie.com/embed/AdfS5lyRkeg?rel=0&modestbranding=1" title="Main Showreel" class="w-full h-full border-0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="px-5 py-3.5 flex items-center justify-between border-t border-slate-200/70 dark:border-white/10">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-0.5 rounded-full bg-etta-500/15 text-etta-300 text-[11px] font-mono border border-etta-500/30">Featured 16:9</span>
+                        <h3 class="font-display text-sm sm:text-base font-bold text-slate-900 dark:text-white">Main Showreel</h3>
+                    </div>
+                    <a href="https://youtu.be/AdfS5lyRkeg" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-etta-400 hover:underline">Open on YouTube ↗</a>
+                </div>
+            </div>
+
+            <!-- 4 Vertical Shorts (9:16) -->
+            <div class="space-y-4">
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">Shorts &amp; Vertical Edits (9:16)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Short 1 -->
+                    <div class="motion-card rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-obsidianLight overflow-hidden flex flex-col shadow-lg">
+                        <div class="relative aspect-[9/16] w-full bg-[#07050E]">
+                            <iframe src="https://www.youtube-nocookie.com/embed/I8rA4ZAP9jk?rel=0&modestbranding=1" title="Short 01" class="w-full h-full border-0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="px-3.5 py-2.5 flex items-center justify-between border-t border-white/10">
+                            <span class="font-display text-xs font-semibold">Short 01</span>
+                            <a href="https://youtube.com/shorts/I8rA4ZAP9jk" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-etta-500 hover:underline">YouTube ↗</a>
+                        </div>
+                    </div>
+                    <!-- Short 2 -->
+                    <div class="motion-card rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-obsidianLight overflow-hidden flex flex-col shadow-lg">
+                        <div class="relative aspect-[9/16] w-full bg-[#07050E]">
+                            <iframe src="https://www.youtube-nocookie.com/embed/845Qyv8rj_w?rel=0&modestbranding=1" title="Short 02" class="w-full h-full border-0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="px-3.5 py-2.5 flex items-center justify-between border-t border-white/10">
+                            <span class="font-display text-xs font-semibold">Short 02</span>
+                            <a href="https://youtube.com/shorts/845Qyv8rj_w" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-etta-500 hover:underline">YouTube ↗</a>
+                        </div>
+                    </div>
+                    <!-- Short 3 -->
+                    <div class="motion-card rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-obsidianLight overflow-hidden flex flex-col shadow-lg">
+                        <div class="relative aspect-[9/16] w-full bg-[#07050E]">
+                            <iframe src="https://www.youtube-nocookie.com/embed/2tgJ48HpA84?rel=0&modestbranding=1" title="Short 03" class="w-full h-full border-0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="px-3.5 py-2.5 flex items-center justify-between border-t border-white/10">
+                            <span class="font-display text-xs font-semibold">Short 03</span>
+                            <a href="https://youtube.com/shorts/2tgJ48HpA84" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-etta-500 hover:underline">YouTube ↗</a>
+                        </div>
+                    </div>
+                    <!-- Short 4 -->
+                    <div class="motion-card rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-obsidianLight overflow-hidden flex flex-col shadow-lg">
+                        <div class="relative aspect-[9/16] w-full bg-[#07050E]">
+                            <iframe src="https://www.youtube-nocookie.com/embed/zy262Wdgk2s?rel=0&modestbranding=1" title="Short 04" class="w-full h-full border-0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="px-3.5 py-2.5 flex items-center justify-between border-t border-white/10">
+                            <span class="font-display text-xs font-semibold">Short 04</span>
+                            <a href="https://youtube.com/shorts/zy262Wdgk2s" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-etta-500 hover:underline">YouTube ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Call to Action -->
+        <section id="discord" class="pb-24">
+            <div class="rounded-3xl border border-etta-500/30 bg-gradient-to-b from-etta-900/40 to-obsidian p-8 sm:p-12 text-center relative overflow-hidden">
+                <div class="max-w-md mx-auto space-y-5 relative z-10">
+                    <div class="w-12 h-12 rounded-2xl bg-etta-600/20 border border-etta-400/30 text-etta-300 flex items-center justify-center mx-auto">
+                        <svg class="w-6 h-6"><use href="#discord-icon"></use></svg>
+                    </div>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Ready to create?</h2>
+                    <p class="text-xs sm:text-sm text-slate-300">Connect with us directly on Discord.</p>
+                    <div class="pt-2">
+                        <a id="primaryDiscordLink" href="https://discord.gg/etta-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-etta-600 hover:bg-etta-500 text-white font-semibold text-sm shadow-xl shadow-etta-600/30 transition-all">
+                            <svg class="w-4 h-4"><use href="#discord-icon"></use></svg>
+                            <span>Join Etta Discord</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/80 dark:border-white/10 py-8 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <svg class="h-5 w-auto text-slate-900 dark:text-white">
+                <use href="#etta-logo"></use>
+            </svg>
+            <span class="text-xs font-mono text-slate-500 dark:text-slate-400">© 2026 Etta</span>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('themeToggleBtn').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>
